@@ -1,0 +1,209 @@
+/* Import Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+.advisory-mission {
+  padding: 120px 0;
+  background: #ffffff;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.advisory-mission-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.mission-content {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.mission-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 2rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.mission-description {
+  font-size: 1.125rem;
+  color: #64748b;
+  line-height: 1.7;
+  margin-bottom: 4rem;
+  font-weight: 400;
+}
+
+.mission-points {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.mission-point {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.point-icon {
+  font-size: 1.25rem;
+  min-width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  color: #64748b;
+  margin-top: 2px;
+}
+
+.point-content {
+  flex: 1;
+}
+
+.point-content h3 {
+  font-family: 'Inter', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+  line-height: 1.4;
+}
+
+.point-content p {
+  font-size: 1rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.mission-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.stat-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 2rem 1.5rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  color: #0f172a;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .advisory-mission {
+    padding: 100px 0;
+  }
+  
+  .mission-content {
+    grid-template-columns: 1fr;
+    gap: 60px;
+  }
+  
+  .mission-stats {
+    flex-direction: row;
+    gap: 1.5rem;
+  }
+  
+  .stat-card {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .advisory-mission {
+    padding: 80px 0;
+  }
+  
+  .advisory-mission-container {
+    padding: 0 1.5rem;
+  }
+  
+  .mission-content {
+    gap: 50px;
+  }
+  
+  .mission-description {
+    font-size: 1.05rem;
+    margin-bottom: 3rem;
+  }
+  
+  .mission-points {
+    gap: 2.5rem;
+  }
+  
+  .mission-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .advisory-mission {
+    padding: 60px 0;
+  }
+  
+  .advisory-mission-container {
+    padding: 0 1rem;
+  }
+  
+  .mission-points {
+    gap: 2rem;
+  }
+  
+  .mission-point {
+    gap: 1rem;
+  }
+  
+  .point-icon {
+    min-width: 36px;
+    height: 36px;
+    font-size: 1.125rem;
+  }
+  
+  .point-content h3 {
+    font-size: 1rem;
+  }
+  
+  .point-content p {
+    font-size: 0.925rem;
+  }
+  
+  .stat-card {
+    padding: 1.5rem;
+  }
+  
+  .stat-number {
+    font-size: 2rem;
+  }
+}

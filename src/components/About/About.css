@@ -1,0 +1,404 @@
+/* About Page Styles */
+/* About Page Main Layout */
+.about-page {
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Reset any margins and ensure smooth transitions */
+.about-page * {
+  box-sizing: border-box;
+}
+
+/* Ensure proper spacing between sections */
+.about-page > section {
+  width: 100%;
+}
+
+/* Mission Section */
+.about-mission {
+  padding: 6rem 0;
+  background: white;
+}
+
+.mission-grid {
+  display: grid;
+  gap: 4rem;
+  align-items: center;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', 'Inter', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+.section-description {
+  font-size: 1.1rem;
+  color: #64748b;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+}
+
+.mission-points {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.mission-point {
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.point-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: rgba(59, 130, 246, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #3b82f6;
+}
+
+.point-content {
+  flex: 1;
+}
+
+.point-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.point-description {
+  color: #64748b;
+  line-height: 1.5;
+}
+
+/* Values Section */
+.about-values {
+  padding: 6rem 0;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.values-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.value-card {
+  background: white;
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.value-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+  transition: left 0.5s ease;
+}
+
+.value-card:hover::before {
+  left: 100%;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+.value-icon {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  color: white;
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover .value-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.value-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.value-description {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* Impact Section */
+.about-impact {
+  padding: 6rem 0;
+  background: white;
+}
+
+.impact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.impact-stats {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #3b82f6;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.stat-label {
+  font-size: 0.9rem;
+  color: #64748b;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Impact Visual */
+.impact-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.impact-card {
+  background: white;
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e2e8f0;
+  width: 100%;
+  max-width: 400px;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.card-badge {
+  background: #10b981;
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.research-areas {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.research-area {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.area-name {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.area-progress {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .impact-content,
+  .mission-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .impact-stats {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-container {
+    padding: 0 1rem;
+  }
+  
+  .about-hero {
+    padding: 2rem 0 4rem 0;
+  }
+  
+  .about-title {
+    font-size: 2.5rem;
+  }
+  
+  .about-subtitle {
+    font-size: 1.25rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .about-mission,
+  .about-values,
+  .about-impact {
+    padding: 4rem 0;
+  }
+  
+  .values-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .impact-stats {
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+  }
+  
+  .mission-point {
+    gap: 1rem;
+  }
+  
+  .point-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title {
+    font-size: 2rem;
+  }
+  
+  .value-card {
+    padding: 2rem 1.5rem;
+  }
+  
+  .value-icon {
+    width: 56px;
+    height: 56px;
+  }
+  
+  .impact-card {
+    padding: 1.5rem;
+  }
+}
+
+/* Animation for scroll effects */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mission-point,
+.value-card,
+.stat-item {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.mission-point:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.mission-point:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.value-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.value-card:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+.value-card:nth-child(4) {
+  animation-delay: 0.3s;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .value-card {
+    border: 2px solid #0f172a;
+  }
+  
+  .point-icon,
+  .value-icon {
+    background: #0f172a;
+    color: white;
+  }
+}
