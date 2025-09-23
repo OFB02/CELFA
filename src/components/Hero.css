@@ -203,6 +203,10 @@
   box-shadow: 0 20px 45px rgba(0, 0, 0, 0.12);
   transition: all 0.4s ease;
   background: #f8fafc;
+  /* Performance optimizations */
+  transform: translateZ(0);
+  will-change: transform;
+  contain: layout style paint;
 }
 
 .hero-image-container.primary-image {
@@ -233,6 +237,15 @@
   object-position: center center;
   transition: all 0.4s ease;
   filter: grayscale(10%) contrast(1.1) brightness(1.05);
+  /* Performance optimizations */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  image-rendering: optimize-quality;
+  transform: translateZ(0);
+  will-change: transform, filter;
+  backface-visibility: hidden;
+  /* Reduced quality for faster loading */
+  image-rendering: auto;
 }
 
 .hero-image-container:hover .hero-image {

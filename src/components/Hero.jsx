@@ -57,6 +57,9 @@ const Hero = () => {
                 src={businessPeopleImage} 
                 alt="Professional business team silhouettes" 
                 className="hero-image"
+                loading="lazy"
+                decoding="async"
+                style={{ imageRendering: 'auto' }}
               />
               <div className="image-overlay"></div>
             </div>
@@ -65,6 +68,9 @@ const Hero = () => {
                 src={handshakeImage} 
                 alt="Corporate business handshake between partners" 
                 className="hero-image"
+                loading="lazy"
+                decoding="async"
+                style={{ imageRendering: 'auto' }}
               />
               <div className="image-overlay"></div>
             </div>
