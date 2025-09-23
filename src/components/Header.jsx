@@ -59,20 +59,29 @@ const Header = () => {
             </li>
             <li className="nav-item">
               <Link 
-                to="/about" 
-                className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
-                aria-label="About page"
-              >
-                About
-              </Link>
-            </li>
-            <li className="nav-item">
-              <Link 
                 to="/advisory-board" 
                 className={`nav-link ${location.pathname === '/advisory-board' ? 'active' : ''}`}
                 aria-label="Advisory Board section"
               >
                 Advisory Board
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                to="/research" 
+                className={`nav-link ${location.pathname === '/research' ? 'active' : ''}`}
+                aria-label="Research page"
+              >
+                Research
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link 
+                to="/about" 
+                className={`nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+                aria-label="About page"
+              >
+                About
               </Link>
             </li>
           </ul>

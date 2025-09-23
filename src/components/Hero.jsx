@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import './Hero.css';
 import businessPeopleImage from '../pictures/silhouette-busy-businesspeople.jpg';
+import handshakeImage from '../pictures/corporate-business-handshake-business-partners.jpg';
 
 const Hero = () => {
   return (
@@ -50,13 +51,23 @@ const Hero = () => {
         </div>
         
         <div className="hero-visual">
-          <div className="hero-image-container">
-            <img 
-              src={businessPeopleImage} 
-              alt="Professional business team silhouettes" 
-              className="hero-image"
-            />
-            <div className="image-overlay"></div>
+          <div className="hero-images-grid">
+            <div className="hero-image-container primary-image">
+              <img 
+                src={businessPeopleImage} 
+                alt="Professional business team silhouettes" 
+                className="hero-image"
+              />
+              <div className="image-overlay"></div>
+            </div>
+            <div className="hero-image-container secondary-image">
+              <img 
+                src={handshakeImage} 
+                alt="Corporate business handshake between partners" 
+                className="hero-image"
+              />
+              <div className="image-overlay"></div>
+            </div>
           </div>
         </div>
       </div>
