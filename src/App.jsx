@@ -3,6 +3,7 @@ import Header from './components/Header'
 import Hero from './components/Hero'
 import Footer from './components/footer'
 import AdvisoryBoard from './pages/AdvisoryBoard'
+import Research from './pages/Research'
 import About from './components/About/About'
 import './App.css'
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<Hero />} />
         <Route path="/about" element={<About />} />
         <Route path="/advisory-board" element={<AdvisoryBoard />} />
+        <Route path="/research" element={<Research />} />
       </Routes>
       <Footer />
     </div>
