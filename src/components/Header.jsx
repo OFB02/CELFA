@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
+import logoImage from '../pictures/CELFA Logo FULL DARK.png';
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -36,7 +37,7 @@ const Header = () => {
         <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Link to="/" className="logo-link">
             <img 
-              src="/src/pictures/CELFA Logo FULL DARK.png" 
+              src={logoImage} 
               alt="CELFA - Centre for European Leadership in Financial AI" 
               className="logo-image"
             />
