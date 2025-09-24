@@ -4,11 +4,11 @@
 .about-hero {
   background: #ffffff;
   color: #0f172a;
-  padding: 120px 0 100px;
+  padding: 100px 0 60px;
   position: relative;
   overflow: hidden;
   font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  min-height: 85vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
 }
@@ -111,7 +111,7 @@
   font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.7;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: #64748b;
   max-width: 600px;
 }
@@ -121,9 +121,47 @@
   align-items: center;
   justify-content: center;
   gap: 2.5rem;
-  padding: 2rem 0;
+  padding: 1.5rem 0;
   border-top: 1px solid #f1f5f9;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.about-founding-info {
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 0;
+}
+
+.founding-text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+
+.founding-year {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #0f172a;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.founding-location {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #64748b;
+  letter-spacing: 0.025em;
 }
 
 .about-stat-item {
@@ -163,45 +201,48 @@
 }
 
 .about-cta-button {
-  padding: 0.875rem 2rem;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
   border-radius: 12px;
-  font-weight: 600;
   font-size: 1rem;
-  transition: all 0.3s ease;
+  font-weight: 600;
+  font-family: inherit;
   cursor: pointer;
-  border: 2px solid transparent;
-  text-decoration: none;
-  display: inline-flex;
+  transition: all 0.3s ease;
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.6rem;
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
+  text-decoration: none;
   position: relative;
   overflow: hidden;
 }
 
 .about-cta-button.primary {
-  background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
   color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
 }
 
 .about-cta-button.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
-  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  box-shadow: 0 8px 30px rgba(59, 130, 246, 0.35);
 }
 
 .about-cta-button.secondary {
   background: transparent;
-  color: #0f172a;
-  border: 2px solid #e2e8f0;
+  color: #475569;
+  border: 1px solid #e2e8f0;
+  box-shadow: none;
 }
 
 .about-cta-button.secondary:hover {
-  background: #f8fafc;
   border-color: #3b82f6;
   color: #3b82f6;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+  background: rgba(59, 130, 246, 0.02);
 }
 
 /* Responsive Design */
@@ -246,6 +287,14 @@
     margin-bottom: 2rem;
   }
   
+  .founding-year {
+    font-size: 2rem;
+  }
+  
+  .founding-location {
+    font-size: 0.95rem;
+  }
+  
   .about-stat-divider {
     display: none;
   }
@@ -258,6 +307,9 @@
   .about-cta-button {
     padding: 0.75rem 1.5rem;
     font-size: 0.95rem;
+    min-height: 48px; /* Improved touch target size */
+    font-weight: 500;
+    letter-spacing: 0.025em;
   }
 }
 
@@ -290,6 +342,18 @@
     justify-content: center;
   }
   
+  .founding-year {
+    font-size: 1.8rem;
+  }
+  
+  .founding-text {
+    font-size: 0.85rem;
+  }
+  
+  .founding-location {
+    font-size: 0.9rem;
+  }
+  
   .about-hero-cta {
     flex-direction: column;
     width: 100%;
@@ -300,5 +364,32 @@
     width: 100%;
     justify-content: center;
     padding: 0.875rem 1.5rem;
+  }
+}
+
+/* Touch device specific interactions */
+@media (hover: none) and (pointer: coarse) {
+  .about-cta-button.primary:hover {
+    transform: none;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.25);
+  }
+  
+  .about-cta-button.secondary:hover {
+    transform: none;
+    background: transparent;
+    border-color: #e2e8f0;
+    color: #475569;
+  }
+  
+  .about-cta-button.primary:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+  }
+  
+  .about-cta-button.secondary:active {
+    transform: scale(0.98);
+    background: rgba(59, 130, 246, 0.05);
+    border-color: #3b82f6;
+    color: #3b82f6;
   }
 }

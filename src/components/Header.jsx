@@ -6,6 +6,7 @@ import logoImage from '../pictures/CELFA Logo FULL DARK.png';
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const location = useLocation();
 
   useEffect(() => {
@@ -18,6 +19,11 @@ const Header = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close mobile menu when route changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
+
   const handleNavClick = (e, href) => {
     e.preventDefault();
     const target = document.querySelector(href);
@@ -29,6 +35,10 @@ const Header = () => {
       });
       setActiveSection(href.substring(1));
     }
+  };
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!mobileMenuOpen);
   };
 
   return (
@@ -47,7 +57,9 @@ const Header = () => {
             </div>
           </Link>
         </div>
-        <nav className="nav" role="navigation" aria-label="Main navigation">
+        
+        {/* Desktop Navigation */}
+        <nav className="nav desktop-nav" role="navigation" aria-label="Main navigation">
           <ul className="nav-list">
             <li className="nav-item">
               <Link 
@@ -87,7 +99,61 @@ const Header = () => {
             </li>
           </ul>
         </nav>
+
+        {/* Mobile Menu Toggle */}
+        <button 
+          className={`mobile-menu-toggle ${mobileMenuOpen ? 'active' : ''}`}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle mobile menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
       </div>
+
+      {/* Mobile Navigation Menu */}
+      <nav className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`} role="navigation" aria-label="Mobile navigation">
+        <ul className="mobile-nav-list">
+          <li className="mobile-nav-item">
+            <Link 
+              to="/" 
+              className={`mobile-nav-link ${location.pathname === '/' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Home
+            </Link>
+          </li>
+          <li className="mobile-nav-item">
+            <Link 
+              to="/advisory-board" 
+              className={`mobile-nav-link ${location.pathname === '/advisory-board' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Advisory Board
+            </Link>
+          </li>
+          <li className="mobile-nav-item">
+            <Link 
+              to="/research" 
+              className={`mobile-nav-link ${location.pathname === '/research' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Research
+            </Link>
+          </li>
+          <li className="mobile-nav-item">
+            <Link 
+              to="/about" 
+              className={`mobile-nav-link ${location.pathname === '/about' ? 'active' : ''}`}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              About
+            </Link>
+          </li>
+        </ul>
+      </nav>
     </header>
   );
 };

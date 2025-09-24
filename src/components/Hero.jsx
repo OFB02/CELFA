@@ -5,6 +5,9 @@ import businessPeopleImage from '../pictures/silhouette-busy-businesspeople.jpg'
 import handshakeImage from '../pictures/corporate-business-handshake-business-partners.jpg';
 
 const Hero = () => {
+  // Detect if device is mobile for optimized image loading
+  const isMobile = typeof window !== 'undefined' && window.innerWidth <= 768;
+
   return (
     <section className="hero">
       <div className="hero-container">
@@ -23,7 +26,7 @@ const Hero = () => {
           <div className="hero-actions">
             <button className="btn-primary">
               Explore Research
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
@@ -57,7 +60,7 @@ const Hero = () => {
                 src={businessPeopleImage} 
                 alt="Professional business team silhouettes" 
                 className="hero-image"
-                loading="lazy"
+                loading={isMobile ? "eager" : "lazy"}
                 decoding="async"
                 style={{ imageRendering: 'auto' }}
               />

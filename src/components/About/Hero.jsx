@@ -2,6 +2,20 @@ import React from 'react';
 import './Hero.css';
 
 const Hero = () => {
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      const headerHeight = 90; // Header height
+      const additionalOffset = -30; // Negative value to scroll further down
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - headerHeight - additionalOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
   return (
     <section className="about-hero">
       <div className="about-hero-container">
@@ -103,26 +117,26 @@ const Hero = () => {
             and drive meaningful change in the financial sector.
           </p>
           <div className="about-hero-stats">
-            <div className="about-stat-item">
-              <div className="about-stat-number">50+</div>
-              <div className="about-stat-label">Experts</div>
-            </div>
-            <div className="about-stat-divider"></div>
-            <div className="about-stat-item">
-              <div className="about-stat-number">15</div>
-              <div className="about-stat-label">Countries</div>
-            </div>
-            <div className="about-stat-divider"></div>
-            <div className="about-stat-item">
-              <div className="about-stat-number">100+</div>
-              <div className="about-stat-label">Programs</div>
+            <div className="about-founding-info">
+              <span className="founding-text">Established</span>
+              <span className="founding-year">2025</span>
+              <span className="founding-location">Frankfurt, Germany</span>
             </div>
           </div>
           <div className="about-hero-cta">
-            <button className="about-cta-button primary">
+            <button 
+              className="about-cta-button primary"
+              onClick={() => scrollToSection('mission')}
+            >
               Our Mission
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
             </button>
-            <button className="about-cta-button secondary">
+            <button 
+              className="about-cta-button secondary"
+              onClick={() => scrollToSection('core-values')}
+            >
               Core Values
             </button>
           </div>

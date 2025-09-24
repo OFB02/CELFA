@@ -13,8 +13,38 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   color: #333;
+  /* Mobile-specific optimizations */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 .App {
   min-height: 100vh;
+  /* Mobile viewport height fix */
+  min-height: -webkit-fill-available;
+}
+
+/* Mobile-specific performance optimizations */
+@media (max-width: 768px) {
+  * {
+    /* Optimize scrolling performance on mobile */
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  body {
+    /* Prevent iOS zoom on form fields */
+    font-size: 16px;
+  }
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
