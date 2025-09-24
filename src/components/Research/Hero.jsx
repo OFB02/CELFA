@@ -1,7 +1,17 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Hero.css'
 
 function ResearchHero() {
+  const [showModal, setShowModal] = useState(false)
+
+  const handleButtonClick = () => {
+    setShowModal(true)
+  }
+
+  const closeModal = () => {
+    setShowModal(false)
+  }
+
   return (
     <section className="research-hero">
       <div className="research-hero-container">
@@ -85,14 +95,37 @@ function ResearchHero() {
             </div>
           </div>
           <div className="research-hero-cta">
-            <button className="research-cta-button primary">
+            <button className="research-cta-button primary" onClick={handleButtonClick}>
               Explore Research
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
-            <button className="research-cta-button secondary">
+            <button className="research-cta-button secondary" onClick={handleButtonClick}>
               Latest Publications
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Coming Soon Modal */}
+      <div className={`coming-soon-modal-overlay ${showModal ? 'active' : ''}`} onClick={closeModal}>
+        <div className="coming-soon-modal" onClick={(e) => e.stopPropagation()}>
+          <div className="coming-soon-modal-icon">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+            </svg>
+          </div>
+          <div className="coming-soon-modal-subtitle">Development Update</div>
+          <h3 className="coming-soon-modal-title">Research Portal In Development</h3>
+          <p className="coming-soon-modal-text">
+            Our comprehensive research database and publications library are currently being developed by our expert team. 
+            This portal will provide access to cutting-edge insights from <span className="coming-soon-modal-highlight">CELFA</span>'s 
+            advisory board on ethical AI implementation and regulatory frameworks in financial services.
+          </p>
+          <div className="coming-soon-modal-actions">
+            <button className="coming-soon-modal-close" onClick={closeModal}>
+              Understood
             </button>
           </div>
         </div>

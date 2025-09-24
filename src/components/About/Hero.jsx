@@ -6,7 +6,8 @@ const Hero = () => {
     const element = document.getElementById(sectionId);
     if (element) {
       const headerHeight = 90; // Header height
-      const additionalOffset = -30; // Negative value to scroll further down
+      // Different offsets for different sections
+      const additionalOffset = sectionId === 'mission' ? -200 : -200; // Both sections scroll further down
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - headerHeight - additionalOffset;
 
@@ -130,7 +131,7 @@ const Hero = () => {
             >
               Our Mission
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M12 5v14M5 12l7 7 7-7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </button>
             <button 

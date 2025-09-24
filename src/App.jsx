@@ -5,11 +5,13 @@ import Footer from './components/footer'
 import AdvisoryBoard from './pages/AdvisoryBoard'
 import Research from './pages/Research'
 import About from './components/About/About'
+import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <Header />
       <Routes>
         <Route path="/" element={<Hero />} />

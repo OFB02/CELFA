@@ -15,7 +15,7 @@
 
 html {
   box-sizing: border-box;
-  scroll-behavior: smooth;
+  scroll-behavior: auto; /* Instant positioning, no smooth scrolling */
   scroll-padding-top: 100px; /* Account for fixed header */
 }
 
