@@ -15,6 +15,7 @@ const Footer = () => {
   });
   const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [newsletterSuccess, setNewsletterSuccess] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -73,10 +74,11 @@ const Footer = () => {
     // Reset form and close modal
     setNewsletterEmail('');
     setIsSubmitting(false);
-    setIsNewsletterModalOpen(false);
-    
-    // Show success message
-    alert('Thank you for subscribing to our newsletter!');
+  // close modal if it was open
+  if (isNewsletterModalOpen) setIsNewsletterModalOpen(false);
+  // show inline success visual for a short time
+  setNewsletterSuccess(true);
+  setTimeout(() => setNewsletterSuccess(false), 3500);
   };
   return (
     <footer className="footer">
@@ -173,18 +175,32 @@ const Footer = () => {
             {/* Newsletter Signup */}
             <div className="footer-newsletter">
               <h5 className="newsletter-title">Stay Updated</h5>
-              <div className="newsletter-form">
-                <input 
-                  type="email" 
-                  placeholder="Enter your email"
-                  className="newsletter-input"
-                  aria-label="Email address for newsletter"
-                />
-                <button className="newsletter-btn" aria-label="Subscribe to newsletter">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                    <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
+              <div aria-live="polite" aria-atomic="true">
+                {newsletterSuccess ? (
+                  <div className="newsletter-success" role="status">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden>
+                      <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                    Thanks — we'll keep you posted
+                  </div>
+                ) : (
+                  <form onSubmit={handleNewsletterSubmit} className="newsletter-form">
+                    <input 
+                      type="email" 
+                      placeholder="Enter your email"
+                      className="newsletter-input"
+                      aria-label="Email address for newsletter"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
+                      required
+                    />
+                    <button type="submit" className="newsletter-btn" aria-label="Subscribe to newsletter" disabled={isSubmitting}>
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </button>
+                  </form>
+                )}
               </div>
             </div>
           </div>
