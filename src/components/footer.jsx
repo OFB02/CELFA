@@ -5,12 +5,15 @@ import './footer.css';
 const Footer = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [isResearchModalOpen, setIsResearchModalOpen] = useState(false);
+  const [isEventsModalOpen, setIsEventsModalOpen] = useState(false);
+  const [isNewsletterModalOpen, setIsNewsletterModalOpen] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     subject: '',
     message: ''
   });
+  const [newsletterEmail, setNewsletterEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (e) => {
@@ -46,6 +49,34 @@ const Footer = () => {
 
   const closeResearchModal = () => {
     setIsResearchModalOpen(false);
+  };
+
+  const closeEventsModal = () => {
+    setIsEventsModalOpen(false);
+  };
+
+  const closeNewsletterModal = () => {
+    setIsNewsletterModalOpen(false);
+    setNewsletterEmail('');
+  };
+
+  const handleNewsletterSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate newsletter subscription
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Here you would typically send the email to your newsletter service
+    console.log('Newsletter subscription:', newsletterEmail);
+    
+    // Reset form and close modal
+    setNewsletterEmail('');
+    setIsSubmitting(false);
+    setIsNewsletterModalOpen(false);
+    
+    // Show success message
+    alert('Thank you for subscribing to our newsletter!');
   };
   return (
     <footer className="footer">
@@ -97,11 +128,11 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-section-title">Research Areas</h4>
             <ul className="footer-links">
-              <li><a href="#" className="footer-link">AI Ethics in Finance</a></li>
-              <li><a href="#" className="footer-link">Regulatory Technology</a></li>
-              <li><a href="#" className="footer-link">Risk Management</a></li>
-              <li><a href="#" className="footer-link">Digital Transformation</a></li>
-              <li><a href="#" className="footer-link">Sustainable Finance</a></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">AI Ethics in Finance</button></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">Regulatory Technology</button></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">Risk Management</button></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">Digital Transformation</button></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">Sustainable Finance</button></li>
             </ul>
           </div>
 
@@ -109,33 +140,36 @@ const Footer = () => {
           <div className="footer-section">
             <h4 className="footer-section-title">Resources</h4>
             <ul className="footer-links">
-              <li><a href="#" className="footer-link">Publications</a></li>
-              <li><a href="#" className="footer-link">White Papers</a></li>
-              <li><a href="#" className="footer-link">Events</a></li>
-              <li><a href="#" className="footer-link">Newsletter</a></li>
-              <li><a href="#" className="footer-link">Press Kit</a></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">Publications</button></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">White Papers</button></li>
+              <li><button onClick={() => setIsEventsModalOpen(true)} className="footer-link footer-link-button">Events</button></li>
+              <li><button onClick={() => setIsNewsletterModalOpen(true)} className="footer-link footer-link-button">Newsletter</button></li>
+              <li><Link to="/press-kit" className="footer-link">Press Kit</Link></li>
             </ul>
           </div>
 
           {/* Contact Info */}
           <div className="footer-section">
             <h4 className="footer-section-title">Connect With Us</h4>
-            <div className="footer-contact">
-              <div className="contact-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
-                </svg>
-                <span>Frankfurt, Germany</span>
-              </div>
-              <a href="https://www.linkedin.com/company/celfa/" className="contact-item contact-link" target="_blank" rel="noopener noreferrer">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
-                </svg>
-                <span>Follow us on LinkedIn</span>
-              </a>
-            </div>
-            
+            <ul className="footer-links">
+              <li className="footer-link">
+                <span style={{display: 'inline-flex', alignItems: 'center', gap: '0.5rem'}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{color: '#94a3b8'}}>
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="2" fill="none"/>
+                    <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  </svg>
+                  Frankfurt, Germany
+                </span>
+              </li>
+              <li className="footer-link footer-linkedin">
+                <a href="https://www.linkedin.com/company/celfa/" target="_blank" rel="noopener noreferrer" style={{display: 'inline-flex', alignItems: 'center', gap: '0.5rem', color: 'inherit', textDecoration: 'none'}}>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" style={{color: '#94a3b8'}}>
+                    <path d="M22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0zM7.12 20.452H3.56V9h3.56v11.452zM5.34 7.433a2.065 2.065 0 1 1 0-4.13 2.065 2.065 0 0 1 0 4.13zm15.11 13.019h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.35V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286z" fill="currentColor"/>
+                  </svg>
+                  Connect with us on LinkedIn
+                </a>
+              </li>
+            </ul>
             {/* Newsletter Signup */}
             <div className="footer-newsletter">
               <h5 className="newsletter-title">Stay Updated</h5>
@@ -331,6 +365,112 @@ const Footer = () => {
                 Understood
               </button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {/* Events Modal */}
+      {isEventsModalOpen && (
+        <div className="modal-overlay" onClick={closeEventsModal}>
+          <div className="events-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="events-modal-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 2V6M16 2V6M3 10H21M5 4H19C20.1046 4 21 4.89543 21 6V20C21 21.1046 20.1046 22 19 22H5C3.89543 22 3 21.1046 3 20V6C3 4.89543 3.89543 4 5 4Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <div className="events-modal-subtitle">Stay Connected</div>
+            <h3 className="events-modal-title">Follow Us for Events</h3>
+            <p className="events-modal-text">
+              Stay up-to-date with <span className="events-modal-highlight">CELFA</span>'s latest events, conferences, 
+              and networking opportunities by following us on LinkedIn. We regularly share updates about upcoming 
+              industry events, expert panels, and exclusive gatherings for financial AI professionals.
+            </p>
+            <div className="events-modal-actions">
+              <button className="events-modal-close" onClick={closeEventsModal}>
+                Maybe Later
+              </button>
+              <a 
+                href="https://www.linkedin.com/company/celfa/" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="events-modal-linkedin"
+                onClick={closeEventsModal}
+              >
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
+                </svg>
+                Follow on LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Newsletter Modal */}
+      {isNewsletterModalOpen && (
+        <div className="modal-overlay" onClick={closeNewsletterModal}>
+          <div className="newsletter-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="newsletter-modal-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2" fill="none"/>
+                <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" fill="none"/>
+              </svg>
+            </div>
+            <div className="newsletter-modal-subtitle">Stay Informed</div>
+            <h3 className="newsletter-modal-title">Subscribe to Our Newsletter</h3>
+            <p className="newsletter-modal-text">
+              Get the latest insights from <span className="newsletter-modal-highlight">CELFA</span>'s experts on 
+              artificial intelligence in finance, regulatory updates, research findings, and upcoming events 
+              delivered directly to your inbox.
+            </p>
+            
+            <form onSubmit={handleNewsletterSubmit} className="newsletter-signup-form">
+              <div className="newsletter-form-group">
+                <label htmlFor="newsletter-email" className="newsletter-form-label">Email Address</label>
+                <input
+                  type="email"
+                  id="newsletter-email"
+                  value={newsletterEmail}
+                  onChange={(e) => setNewsletterEmail(e.target.value)}
+                  className="newsletter-form-input"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+              
+              <div className="newsletter-modal-actions">
+                <button
+                  type="button"
+                  className="newsletter-modal-close"
+                  onClick={closeNewsletterModal}
+                >
+                  Maybe Later
+                </button>
+                <button
+                  type="submit"
+                  className="newsletter-modal-subscribe"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="btn-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                        <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.25"/>
+                        <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                      Subscribing...
+                    </>
+                  ) : (
+                    <>
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2" fill="none"/>
+                        <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                      </svg>
+                      Subscribe Now
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
           </div>
         </div>
       )}

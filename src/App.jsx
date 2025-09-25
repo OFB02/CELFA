@@ -9,6 +9,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy'
 import TermsOfService from './pages/TermsOfService'
 import CookiePolicy from './pages/CookiePolicy'
 import Accessibility from './pages/Accessibility'
+import PressKit from './pages/PressKit'
 import ScrollToTop from './components/ScrollToTop'
 import './App.css'
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/terms-of-service" element={<TermsOfService />} />
         <Route path="/cookie-policy" element={<CookiePolicy />} />
         <Route path="/accessibility" element={<Accessibility />} />
+        <Route path="/press-kit" element={<PressKit />} />
       </Routes>
       <Footer />
     </div>
