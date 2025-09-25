@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Hero.css';
-import businessPeopleImage from '../pictures/silhouette-busy-businesspeople.jpg';
-import handshakeImage from '../pictures/corporate-business-handshake-business-partners.jpg';
+// Images are served from public/pictures. Use public paths to avoid bundling from src.
+const businessPeopleImage = '/pictures/silhouette-busy-businesspeople.jpg';
+const handshakeImage = '/pictures/corporate-business-handshake-business-partners.jpg';
 
 const Hero = () => {
   // Detect if device is mobile for optimized image loading
@@ -24,12 +25,12 @@ const Hero = () => {
           </p>
           
           <div className="hero-actions">
-            <Link to="/research" className="btn-primary">
+            <button className="btn-primary">
               Explore Research
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                 <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
-            </Link>
+            </button>
             <Link to="/advisory-board" className="btn-secondary">
               Advisory Board
             </Link>

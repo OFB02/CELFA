@@ -41,7 +41,7 @@ const CoreValues = () => {
         <div className="about-core-values-grid">
           <div className="about-core-values-center">
             <img 
-              src="/src/pictures/CELFA Logo FULL DARK.png" 
+              src="/pictures/CELFA Logo FULL DARK.png" 
               alt="CELFA Logo" 
               className="core-values-logo"
             />

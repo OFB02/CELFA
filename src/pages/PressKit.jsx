@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './PressKit.css';
-import celfahLogo from '../pictures/CELFA Logo FULL DARK.png';
+// Logo files live in the public/pictures folder. Use absolute public paths (e.g. /pictures/...) so Vite
+// serves them at runtime instead of trying to bundle from src/.
 
 const PressKit = () => {
   const [downloadedItems, setDownloadedItems] = useState(new Set());
@@ -30,7 +31,7 @@ const PressKit = () => {
       name: 'CELFA Full Logo (Dark)',
       file: 'CELFA-Logo-Full-Dark.png',
       description: 'Primary logo with full name for light backgrounds',
-      url: celfahLogo,
+      url: '/pictures/CELFA Logo FULL DARK.png',
       type: 'PNG',
       size: '300x120px'
     },
@@ -38,7 +39,7 @@ const PressKit = () => {
       name: 'CELFA Logo (Light)',
       file: 'CELFA-Logo-Light.png',
       description: 'Logo version for dark backgrounds',
-      url: '/src/pictures/CELFA Logo LIGHT.png',
+      url: '/pictures/CELFA Logo LIGHT.png',
       type: 'PNG',
       size: '120x120px'
     },
@@ -46,7 +47,7 @@ const PressKit = () => {
       name: 'CELFA Logo (Dark)',
       file: 'CELFA-Logo-Dark.png',
       description: 'Logo version for light backgrounds',
-      url: '/src/pictures/CELFA Logo DARK.png',
+      url: '/pictures/CELFA Logo DARK.png',
       type: 'PNG',
       size: '120x120px'
     }

@@ -141,10 +141,15 @@
 
 .advisory-stat-label {
   font-size: 0.9rem;
-  color: #64748b;
+  color: #64748b !important;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+}
+
+/* Ensure consistent color with main hero description */
+.advisory-hero .advisory-stat-label {
+  color: #64748b !important;
 }
 
 .advisory-stat-divider {

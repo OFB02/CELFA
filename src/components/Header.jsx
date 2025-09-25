@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
-import logoImage from '../pictures/CELFA Logo FULL DARK.png';
+// Logo moved to public/pictures. Use public path at runtime.
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -47,7 +47,7 @@ const Header = () => {
         <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Link to="/" className="logo-link">
             <img 
-              src={logoImage} 
+              src="/pictures/CELFA Logo FULL DARK.png" 
               alt="CELFA - Centre for European Leadership in Financial AI" 
               className="logo-image"
             />

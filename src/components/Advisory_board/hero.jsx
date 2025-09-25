@@ -1,7 +1,8 @@
 import React from 'react'
 import './hero.css'
-import businessTeamImage from '../../pictures/corporate-businessmen-working-tablet-office.jpg'
-import femaleExecutiveImage from '../../pictures/female-business-executive-giving-speech.jpg'
+// Images are in public/pictures — reference them with absolute public paths
+const businessTeamImage = '/pictures/corporate-businessmen-working-tablet-office.jpg';
+const femaleExecutiveImage = '/pictures/female-business-executive-giving-speech.jpg';
 
 function AdvisoryBoardHero() {
   return (
