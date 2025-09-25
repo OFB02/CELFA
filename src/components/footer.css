@@ -94,6 +94,15 @@
   text-decoration: none;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Ensure button version looks identical to anchor version */
+button.social-link {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 }
 
 .social-link:hover {
@@ -181,6 +190,38 @@
   left: 0;
 }
 
+/* Button version of footer links */
+.footer-link-button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.footer-link-button::before {
+  content: '';
+  position: absolute;
+  left: -10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  background: #3b82f6;
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.footer-link-button:hover::before {
+  opacity: 1;
+  left: 0;
+}
+
 /* Contact Information */
 .footer-contact {
   display: flex;
@@ -204,6 +245,26 @@
 
 .contact-item:hover svg {
   color: #3b82f6;
+}
+
+/* Contact link styling */
+.contact-link {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  padding: 0.25rem 0;
+  border-radius: 4px;
+}
+
+.contact-link:hover {
+  color: #f8fafc;
+  background: rgba(59, 130, 246, 0.1);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.contact-link:hover svg {
+  color: #3b82f6;
+  transform: scale(1.1);
 }
 
 /* Newsletter Signup */
@@ -493,6 +554,261 @@
   outline-offset: 2px;
 }
 
+/* Contact Modal Styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: 1rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.contact-modal {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 16px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(148, 163, 184, 0.1);
+  max-width: 600px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: slideInUp 0.3s ease-out;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem 2rem 0 2rem;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  margin-bottom: 0;
+  padding-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0;
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  color: #64748b;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-btn:hover {
+  background: rgba(148, 163, 184, 0.1);
+  color: #334155;
+}
+
+.modal-body {
+  padding: 1.5rem 2rem 2rem 2rem;
+}
+
+.modal-description {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #334155;
+  font-size: 0.9rem;
+}
+
+.form-input {
+  padding: 0.875rem 1rem;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #0f172a;
+  background: white;
+  transition: all 0.2s ease;
+}
+
+.form-input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-select {
+  cursor: pointer;
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+.form-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: inherit;
+  border: none;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #64748b;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+}
+
+.btn-secondary:hover {
+  background: rgba(148, 163, 184, 0.1);
+  color: #334155;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.btn-spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Modal responsive design */
+@media (max-width: 768px) {
+  .modal-overlay {
+    padding: 0.5rem;
+  }
+  
+  .contact-modal {
+    max-height: 95vh;
+  }
+  
+  .modal-header {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+    padding-bottom: 1rem;
+  }
+  
+  .modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .modal-body {
+    padding: 1rem 1.5rem 1.5rem 1.5rem;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
+    flex-direction: column-reverse;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
 /* Add subtle animation effects */
 @keyframes fadeInUp {
   from {
@@ -523,4 +839,111 @@
 
 .footer-section:nth-child(5) {
   animation-delay: 0.4s;
+}
+
+/* Research Portal Modal Styles */
+.research-portal-modal {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  border-radius: 20px;
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.25),
+    0 0 0 1px rgba(148, 163, 184, 0.1);
+  max-width: 500px;
+  width: 100%;
+  padding: 3rem;
+  text-align: center;
+  animation: slideInUp 0.3s ease-out;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+.research-modal-icon {
+  width: 64px;
+  height: 64px;
+  margin: 0 auto 1.5rem auto;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.research-modal-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.research-modal-subtitle {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #3b82f6;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+.research-modal-title {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #0f172a;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, #0f172a 0%, #334155 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.research-modal-text {
+  color: #64748b;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0 0 2rem 0;
+}
+
+.research-modal-highlight {
+  color: #3b82f6;
+  font-weight: 600;
+}
+
+.research-modal-actions {
+  display: flex;
+  justify-content: center;
+}
+
+.research-modal-close {
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+  color: white;
+  border: none;
+  padding: 0.875rem 2rem;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-family: inherit;
+  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+}
+
+.research-modal-close:hover {
+  background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Research Modal responsive design */
+@media (max-width: 768px) {
+  .research-portal-modal {
+    padding: 2rem;
+    margin: 1rem;
+  }
+  
+  .research-modal-title {
+    font-size: 1.5rem;
+  }
+  
+  .research-modal-text {
+    font-size: 0.95rem;
+  }
 }

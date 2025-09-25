@@ -1,8 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './footer.css';
 
 const Footer = () => {
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [isResearchModalOpen, setIsResearchModalOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleInputChange = (e) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    // Here you would typically send the data to your backend
+    console.log('Form submitted:', formData);
+    
+    // Reset form and close modal
+    setFormData({ name: '', email: '', subject: '', message: '' });
+    setIsSubmitting(false);
+    setIsContactModalOpen(false);
+    
+    // Show success message (you could use a toast library here)
+    alert('Thank you for your message! We will get back to you soon.');
+  };
+
+  const closeModal = () => {
+    setIsContactModalOpen(false);
+  };
+
+  const closeResearchModal = () => {
+    setIsResearchModalOpen(false);
+  };
   return (
     <footer className="footer">
       <div className="footer-container">
@@ -24,12 +68,16 @@ const Footer = () => {
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
                 </svg>
               </a>
-              <a href="#" className="social-link" aria-label="Email">
+              <button 
+                onClick={() => setIsContactModalOpen(true)} 
+                className="social-link" 
+                aria-label="Contact Us"
+              >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
                   <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2" fill="none"/>
                   <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" fill="none"/>
                 </svg>
-              </a>
+              </button>
             </div>
           </div>
 
@@ -39,9 +87,9 @@ const Footer = () => {
             <ul className="footer-links">
               <li><Link to="/about" className="footer-link">About CELFA</Link></li>
               <li><Link to="/advisory-board" className="footer-link">Advisory Board</Link></li>
-              <li><a href="#research" className="footer-link">Research</a></li>
-              <li><a href="#insights" className="footer-link">Insights</a></li>
-              <li><a href="#contact" className="footer-link">Contact</a></li>
+              <li><Link to="/research" className="footer-link">Research</Link></li>
+              <li><button onClick={() => setIsResearchModalOpen(true)} className="footer-link footer-link-button">Insights</button></li>
+              <li><button onClick={() => setIsContactModalOpen(true)} className="footer-link footer-link-button">Contact</button></li>
             </ul>
           </div>
 
@@ -78,21 +126,14 @@ const Footer = () => {
                   <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" stroke="currentColor" strokeWidth="2" fill="none"/>
                   <circle cx="12" cy="10" r="3" stroke="currentColor" strokeWidth="2" fill="none"/>
                 </svg>
-                <span>Brussels, Belgium</span>
+                <span>Frankfurt, Germany</span>
               </div>
-              <div className="contact-item">
+              <a href="https://www.linkedin.com/company/celfa/" className="contact-item contact-link" target="_blank" rel="noopener noreferrer">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" stroke="currentColor" strokeWidth="2" fill="none"/>
-                  <polyline points="22,6 12,13 2,6" stroke="currentColor" strokeWidth="2" fill="none"/>
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" fill="currentColor"/>
                 </svg>
-                <span>info@celfa.eu</span>
-              </div>
-              <div className="contact-item">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="2" fill="none"/>
-                </svg>
-                <span>+32 2 XXX XXXX</span>
-              </div>
+                <span>Follow us on LinkedIn</span>
+              </a>
             </div>
             
             {/* Newsletter Signup */}
@@ -119,15 +160,15 @@ const Footer = () => {
         <div className="footer-bottom">
           <div className="footer-bottom-content">
             <div className="footer-legal">
-              <p>&copy; 2024 Centre for European Leadership in Financial AI. All rights reserved.</p>
+              <p>&copy; 2025 Centre for European Leadership in Financial AI. All rights reserved.</p>
               <div className="legal-links">
-                <a href="#" className="legal-link">Privacy Policy</a>
+                <Link to="/privacy-policy" className="legal-link">Privacy Policy</Link>
                 <span className="legal-divider">|</span>
-                <a href="#" className="legal-link">Terms of Service</a>
+                <Link to="/terms-of-service" className="legal-link">Terms of Service</Link>
                 <span className="legal-divider">|</span>
-                <a href="#" className="legal-link">Cookie Policy</a>
+                <Link to="/cookie-policy" className="legal-link">Cookie Policy</Link>
                 <span className="legal-divider">|</span>
-                <a href="#" className="legal-link">Accessibility</a>
+                <Link to="/accessibility" className="legal-link">Accessibility</Link>
               </div>
             </div>
             <div className="footer-certifications">
@@ -148,6 +189,151 @@ const Footer = () => {
           </div>
         </div>
       </div>
+
+      {/* Contact Modal */}
+      {isContactModalOpen && (
+        <div className="modal-overlay" onClick={closeModal}>
+          <div className="contact-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="modal-header">
+              <h2 className="modal-title">Contact CELFA</h2>
+              <button 
+                className="modal-close-btn" 
+                onClick={closeModal}
+                aria-label="Close modal"
+              >
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </button>
+            </div>
+            
+            <div className="modal-body">
+              <p className="modal-description">
+                Get in touch with our team. We're here to answer your questions about 
+                financial AI, research opportunities, or partnership possibilities.
+              </p>
+              
+              <form onSubmit={handleSubmit} className="contact-form">
+                <div className="form-row">
+                  <div className="form-group">
+                    <label htmlFor="name" className="form-label">Full Name *</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleInputChange}
+                      className="form-input"
+                      placeholder="Your full name"
+                      required
+                    />
+                  </div>
+                  
+                  <div className="form-group">
+                    <label htmlFor="email" className="form-label">Email Address *</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleInputChange}
+                      className="form-input"
+                      placeholder="your.email@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="subject" className="form-label">Subject *</label>
+                  <select
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    className="form-input form-select"
+                    required
+                  >
+                    <option value="">Select a subject</option>
+                    <option value="general">General Inquiry</option>
+                    <option value="research">Research Collaboration</option>
+                    <option value="partnership">Partnership Opportunity</option>
+                    <option value="press">Press & Media</option>
+                    <option value="speaking">Speaking Engagement</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                
+                <div className="form-group">
+                  <label htmlFor="message" className="form-label">Message *</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    className="form-input form-textarea"
+                    placeholder="Please provide details about your inquiry..."
+                    rows="5"
+                    required
+                  ></textarea>
+                </div>
+                
+                <div className="form-actions">
+                  <button
+                    type="button"
+                    onClick={closeModal}
+                    className="btn btn-secondary"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="btn btn-primary"
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? (
+                      <>
+                        <svg className="btn-spinner" width="16" height="16" viewBox="0 0 24 24" fill="none">
+                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" fill="none" opacity="0.25"/>
+                          <path d="M12 2a10 10 0 0 1 10 10" stroke="currentColor" strokeWidth="2" fill="none"/>
+                        </svg>
+                        Sending...
+                      </>
+                    ) : (
+                      'Send Message'
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Research Portal Modal */}
+      {isResearchModalOpen && (
+        <div className="modal-overlay" onClick={closeResearchModal}>
+          <div className="research-portal-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="research-modal-icon">
+              <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
+              </svg>
+            </div>
+            <div className="research-modal-subtitle">Development Update</div>
+            <h3 className="research-modal-title">Research Portal In Development</h3>
+            <p className="research-modal-text">
+              Our comprehensive research database and publications library are currently being developed by our expert team. 
+              This portal will provide access to cutting-edge insights from <span className="research-modal-highlight">CELFA</span>'s 
+              advisory board on ethical AI implementation and regulatory frameworks in financial services.
+            </p>
+            <div className="research-modal-actions">
+              <button className="research-modal-close" onClick={closeResearchModal}>
+                Understood
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </footer>
   );
 };
