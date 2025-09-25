@@ -1,14 +1,12 @@
 /* LinkedIn logo color on hover for Connect With Us column */
-.footer-link.footer-linkedin:hover svg {
+.footer-connect .footer-link.footer-linkedin:hover svg {
   color: #0A66C2 !important;
   fill: #0A66C2 !important;
 }
-/* Remove blue dot on hover for all items in Connect With Us column */
-.footer-section:has(.footer-links) .footer-link::before {
-  display: none !important;
-}
-/* Remove blue dot for LinkedIn link in Connect With Us column */
-.footer-link a[href*="linkedin"]::before {
+/* Hide blue dot only for items inside the Connect With Us column */
+.footer-connect .footer-link::before,
+.footer-connect .footer-link-button::before,
+.footer-connect .footer-link a[href*="linkedin"]::before {
   display: none !important;
 }
 /* Import professional fonts */

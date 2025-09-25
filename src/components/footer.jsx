@@ -149,7 +149,7 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div className="footer-section">
+          <div className="footer-section footer-connect">
             <h4 className="footer-section-title">Connect With Us</h4>
             <ul className="footer-links">
               <li className="footer-link">
