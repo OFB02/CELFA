@@ -31,7 +31,7 @@ const PressKit = () => {
       name: 'CELFA Full Logo (Dark)',
       file: 'CELFA-Logo-Full-Dark.png',
       description: 'Primary logo with full name for light backgrounds',
-      url: '/pictures/CELFA Logo FULL DARK.png',
+      url: encodeURI('/pictures/CELFA Logo3_1a.png'),
       type: 'PNG',
       size: '300x120px'
     },
@@ -39,7 +39,7 @@ const PressKit = () => {
       name: 'CELFA Logo (Light)',
       file: 'CELFA-Logo-Light.png',
       description: 'Logo version for dark backgrounds',
-      url: '/pictures/CELFA Logo LIGHT.png',
+  url: encodeURI('/pictures/CELFA Logo LIGHT.png'),
       type: 'PNG',
       size: '120x120px'
     },
@@ -47,7 +47,7 @@ const PressKit = () => {
       name: 'CELFA Logo (Dark)',
       file: 'CELFA-Logo-Dark.png',
       description: 'Logo version for light backgrounds',
-      url: '/pictures/CELFA Logo DARK.png',
+  url: encodeURI('/pictures/CELFA Logo DARK.png'),
       type: 'PNG',
       size: '120x120px'
     }

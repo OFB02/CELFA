@@ -40,9 +40,9 @@ const CoreValues = () => {
         </div>
         <div className="about-core-values-grid">
           <div className="about-core-values-center">
-            <img 
-              src="/pictures/CELFA Logo FULL DARK.png" 
-              alt="CELFA Logo" 
+            <img
+              src={encodeURI('/pictures/CELFA Logo3_1a.png')}
+              alt="CELFA Logo"
               className="core-values-logo"
             />
           </div>

@@ -46,9 +46,9 @@ const Header = () => {
       <div className="header-container">
         <div className="logo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
           <Link to="/" className="logo-link">
-            <img 
-              src="/pictures/CELFA Logo FULL DARK.png" 
-              alt="CELFA - Centre for European Leadership in Financial AI" 
+            <img
+              src={encodeURI('/pictures/CELFA Logo3_1a.png')}
+              alt="CELFA - Centre for European Leadership in Financial AI"
               className="logo-image"
             />
             <div className="logo-text-container">

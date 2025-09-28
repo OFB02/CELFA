@@ -14,7 +14,7 @@ function AdvisoryBoardHero() {
             <span className="title-highlight">Board</span>
           </h1>
           <p className="advisory-hero-subtitle">
-            Distinguished leaders and visionaries from across Europe's financial and technology sectors, 
+            Leaders and visionaries from across Europe's financial and technology sectors, 
             united in shaping the future of ethical AI innovation and establishing industry-leading standards 
             for responsible artificial intelligence in finance.
           </p>
